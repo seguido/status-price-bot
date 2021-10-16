@@ -5,6 +5,7 @@ const bot = new Discord.Client();
 require("dotenv").config();
 
 bot.once("ready", async () => {
+  console.log('Bot is online')
   updateStatus();
   cron.schedule("*/20 * * * * *", () => {
     updateStatus();
