@@ -1,0 +1,13 @@
+{
+  "name": "status-price-bot",
+  "version": "1.0.0",
+  "main": "src/bot.js",
+  "author": "chebiN",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "ethers": "^5.4.7",
+    "node-cron": "^3.0.0"
+  }
+}
