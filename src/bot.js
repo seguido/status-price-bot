@@ -15,7 +15,7 @@ bot.once("ready", async () => {
 const updateStatus = async () => {
   try {
     let price = (await fetchTokenPrice()).toFixed(process.env.PRICE_PRECISION);
-    await bot.user.setActivity(`BEETS $${price}`, {type: 'WATCHING'});
+    await bot.user.setActivity(`${process.env.NAME} $${price}`, {type: 'WATCHING'});
 } catch (err) {
     console.log(`Error updating price status: ${err.message}`);
   }
