@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const cron = require("node-cron");
-const { fetchTokenPrice } = require("./price");
+const { fetchTokenPrice, fetchTokenPriceLp } = require("./price");
 const bot = new Discord.Client();
 require("dotenv").config();
 
@@ -14,7 +14,7 @@ bot.once("ready", async () => {
 
 const updateStatus = async () => {
   try {
-    let price = (await fetchTokenPrice()).toFixed(process.env.PRICE_PRECISION);
+    let price = (await fetchTokenPriceLp()).toFixed(process.env.PRICE_PRECISION);
     await bot.user.setActivity(`${process.env.NAME} $${price}`, {type: 'WATCHING'});
 } catch (err) {
     console.log(`Error updating price status: ${err.message}`);
