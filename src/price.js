@@ -5,11 +5,11 @@ const fetchTokenPrice = async () => {
   const provider = new ethers.providers.JsonRpcProvider(process.env.RPC);
   const contract = new ethers.Contract(process.env.BEETS_POOLS, beetsPoolsContractAbi, provider);
 
-  let price = await contract.getPoolTokens("0x8c3c964c2d08679d3d09866cf62c5b14a5346479000100000000000000000207");
-  let impAmount = price.balances[0]/1e9;
-  let daiAmount = price.balances[3]/1e18;
-  let impPrice = (daiAmount*7)/impAmount
-  return impPrice;
+  let price = await contract.getPoolTokens(process.env.SUMMIT_BEETS_POOL);
+  let usdcAmount = price.balances[0]/1e6;
+  let summitV2Amount = price.balances[1]/1e18;
+  let summitv2Price = (usdcAmount*3)/summitV2Amount
+  return summitv2Price;
 };
 
 module.exports = {

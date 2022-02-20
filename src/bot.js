@@ -7,7 +7,7 @@ require("dotenv").config();
 bot.once("ready", async () => {
   console.log(`${process.env.NAME} bot is online`)
   updateStatus();
-  cron.schedule("*/20 * * * * *", () => {
+  cron.schedule("*/2 * * * * *", () => {
     updateStatus();
   });
 });
@@ -15,7 +15,6 @@ bot.once("ready", async () => {
 const updateStatus = async () => {
   try {
     let price = (await fetchTokenPrice()).toFixed(process.env.PRICE_PRECISION);
-    console.log(price)
     await bot.user.setActivity(`${process.env.NAME} $${price}`, {type: 'WATCHING'});
 } catch (err) {
     console.log(`Error updating price status: ${err.message}`);
